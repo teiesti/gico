@@ -26,3 +26,6 @@ else
 	# This should never happen because such errors are caught by gico.sh
 	>&2 echo "Error! Wrong number of arguments."
 fi
+
+# Configure resources
+$HOME_DIR/gico-configure.sh

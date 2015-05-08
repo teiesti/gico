@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Load environment variables
-HOME_DIR=$(dirname $BASH_SOURCE)	# could not be loaded within environment.sh because of chicken and egg
+HOME_DIR=$(dirname $(readlink -f $BASH_SOURCE))	# could not be loaded within environment.sh because of chicken and egg
 source $HOME_DIR/environment.sh
 
 # TODO We may need to check access rights here. For instance we need to be root. A possible check would be...

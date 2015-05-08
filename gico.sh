@@ -45,6 +45,13 @@ elif [ $1 -eq "install"]; then
 		./gico-help.sh
 	fi
 fi
+elif [ $1 -eq "self-install"]; then
+	if [ $# -eq 1 ]; then
+		./gico-self-install.sh
+	else
+		./gico-help.sh
+	fi
+fi
 elif [ $1 -eq "update"]; then
 	if [ $# -eq 1 ]; then
 		./gico-update.sh

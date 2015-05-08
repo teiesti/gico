@@ -15,7 +15,7 @@ The main idea behind *gico* is that You store almost every configuration within 
 ## Basic operations
 
 ### Creating a repository (not yet implemented)
-To use *gico* You need to create a new "gico-flavored* Git repository. The easiest way to do this, is to run `gico init [<branch>]`. This creates an "empty" repository to `/usr/local/etc/gico`. If this path already exists, *gico* will abort and You must manually delete the folder. An empty repository consists of
+To use *gico* You need to create a new "gico-flavored" Git repository. The easiest way to do this, is to run `gico init [<branch>]`. This creates an "empty" repository to `/usr/local/etc/gico`. If this path already exists, *gico* will abort and You must manually delete the folder. An empty repository consists of
   - `<repo>/res` where all the installable resource files (e.g. configuration files) live,
   - `<repo>/hooks' which stores the hooks,
   - `<repo>/backup` which is used to back up existing files when the resources are installed and 

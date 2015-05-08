@@ -3,6 +3,13 @@
 # Load environment variables
 source environment.sh
 
+# TODO We may need to check access rights here. For instance we need to be root. A possible check would be...
+## Check if I am root, abort if not.
+#if [ $(whoami) != "root" ]; then
+#	>&2 echo "Error! I am not root."
+#	exit
+#fi
+
 # Install new resources files and back up existing ones
 echo "Installing new resources files. Existing files will be backed up to $BACKUP_DIR."
 for RESOURCE_FILE in $(find $RESOURCE_DIR -type f); do

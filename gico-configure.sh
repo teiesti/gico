@@ -18,7 +18,7 @@ for RESOURCE_FILE in $(find $RESOURCE_DIR -type f); do
 	BACKUP_FILE=$BACKUP_DIR$ORIGINAL_FILE
 	
 	# Check if the resource file is already installed
-	if [ ! $RESOURCE_FILE -ef $EXISTING_FILEE ]; then
+	if [ ! $RESOURCE_FILE -ef $EXISTING_FILE ]; then
 		mkdir -p $(dirname $BACKUP_FILE)
 		
 		# Move existing files to the backup folder or create a dummy file if no such file exists

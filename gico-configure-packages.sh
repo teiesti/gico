@@ -6,7 +6,7 @@ source $HOME_DIR/environment.sh
 
 # Install or uninstall packages
 echo "Configuring packages as defined in $PACKAGES_FILE."
-for QUALIFIED_PACKAGE in $(cat $PACKAGES_FILE) do
+for QUALIFIED_PACKAGE in $(cat $PACKAGES_FILE); do
 	JOB=$(QUALIFIED_PACKAGE:0:1)
 	PACKAGE=$(QUALIFIED_PACKAGE:1)
 	

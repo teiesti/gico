@@ -20,3 +20,6 @@ To use *gico* You need to create a new "gico-flavored" Git repository. The easie
   - `<repo>/hooks' which stores the hooks,
   - `<repo>/backup` which is used to back up existing files when the resources are installed and 
   - `<repo>/packages`which is a list of packages which should be installed or removed.
+
+### Cloneing an existing repository
+In most cases, You want to clone an existing repository from a server. You can to this with `gico install <repo> [<branch>]` where `<repo>` is the URL to a usual Git repository. To avoid errors, it should have the structure explained above. You can use the optional `<branch>` branch parameter to clone a specific branch. This is especially useful if You have to manage different servers with slightly different configuration. Cloning an repository will install any file in `<repo>/res` to the root of Your file system using hardlinks. Hardlinks are used because they do better with permissions and won't break if someone removes the original - otherwise this may breaks the hole system. `gico install <repo> [<branch>]` does not install or remove the packages specified in `<repo>/packages`. Therefore, please use `gico full-install <repo> [<branch>]`.

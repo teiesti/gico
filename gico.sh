@@ -1,58 +1,62 @@
 #!/bin/bash
 
+# Load environment variables
+HOME_DIR=$(dirname $BASH_SOURCE)	# could not be loaded within environment.sh because of chicken and egg
+source $HOME_DIR/environment.sh
+
 # Check if a command is given
 if [ $# -lt 1 ]; then
-	./gico-help.sh
+	$HOME_DIR/gico-help.sh
 	exit
 fi
 
 # Execute command
 if [ $1 = "configure" ]; then
 	if [ $# -eq 1 ]; then
-		./gico-configure.sh
+		$HOME_DIR/gico-configure.sh
 	else
-		./gico-help.sh
+		$HOME_DIR/gico-help.sh
 	fi
 elif [ $1 = "configure-packages" ]; then
 	if [ $# -eq 1 ]; then
-		./gico-configure-packages.sh
+		$HOME_DIR/gico-configure-packages.sh
 	else
-		./gico-help.sh
+		$HOME_DIR/gico-help.sh
 	fi
 elif [ $1 = "full-install" ]; then
 	if [ $# -eq 2 ]; then
-		./gico-full-install.sh $2
+		$HOME_DIR/gico-full-install.sh $2
 	elif [ $# -eq 3 ]; then
-		./gico-full-install.sh $2 $3
+		$HOME_DIR/gico-full-install.sh $2 $3
 	else
-		./gico-help.sh
+		$HOME_DIR/gico-help.sh
 	fi
 elif [ $1 = "full-update" ]; then
 	if [ $# -eq 1 ]; then
-		./gico-full-update.sh
+		$HOME_DIR/gico-full-update.sh
 	else
-		./gico-help.sh
+		$HOME_DIR/gico-help.sh
 	fi
 elif [ $1 = "install" ]; then
 	if [ $# -eq 2 ]; then
-		./gico-install.sh $2
+		$HOME_DIR/gico-install.sh $2
 	elif [ $# -eq 3 ]; then
-		./gico-install.sh $2 $3
+		$HOME_DIR/gico-install.sh $2 $3
 	else
-		./gico-help.sh
+		$HOME_DIR/gico-help.sh
 	fi
 elif [ $1 = "self-install" ]; then
 	if [ $# -eq 1 ]; then
-		./gico-self-install.sh
+		$HOME_DIR/gico-self-install.sh
 	else
-		./gico-help.sh
+		$HOME_DIR/gico-help.sh
 	fi
 elif [ $1 = "update" ]; then
 	if [ $# -eq 1 ]; then
-		./gico-update.sh
+		$HOME_DIR/gico-update.sh
 	else
-		./gico-help.sh
+		$HOME_DIR/gico-help.sh
 	fi
 else
-	./gico-help.sh
+	$HOME_DIR/gico-help.sh
 fi

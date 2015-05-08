@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Load environment variables
-source environment.sh
+HOME_DIR=$(dirname $BASH_SOURCE)	# could not be loaded within environment.sh because of chicken and egg
+source $HOME_DIR/environment.sh
 
 # Check if Git is installed
 if [ ! -x $(which git) ]; then

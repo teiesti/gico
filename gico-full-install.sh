@@ -1,4 +1,8 @@
 #!/bin/bash
 
-./gico-install.sh $@
-./gico-configure-packages.sh
+# Load environment variables
+HOME_DIR=$(dirname $BASH_SOURCE)	# could not be loaded within environment.sh because of chicken and egg
+#source $HOME_DIR/environment.sh
+
+$HOME_DIR/gico-install.sh $@
+$HOME_DIR/gico-configure-packages.sh

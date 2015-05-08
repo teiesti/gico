@@ -1,6 +1,5 @@
 #!/bin/bash
 
-HOME_DIR=$(dirname $(readlink -f ${0}))	# path where all the gico scripts live
 BIN_DIR=/usr/local/bin					# path to the bin folder
 DIR=/usr/local/etc/gico					# path to the configuration repository
 RESOURCE_DIR=$DIR/res					# path where installable resources where stored

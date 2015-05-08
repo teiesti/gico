@@ -11,18 +11,18 @@ if [ ! -x $(which git) ]; then
 fi
 
 # Check if the directory for the configuration repository is empty
-if [ "$(ls -A $DIR)" ]; then
+if [ -e $DIR ] && [ "$(ls -A $DIR)" ]; then
 	>&2 echo "Error! $DIR is not empty."
 	exit
 fi
 
 # Clone repository
 echo "Cloning repository."
-if [ $# -eq 1]; then
+if [ $# -eq 1 ]; then
 	git clone $1 $DIR
-elif [$# -eq 2]; then
+elif [ $# -eq 2 ]; then
 	git clone -b $2 $1 $DIR
 else
-	# This should never happen because such error are caught by gico.sh
+	# This should never happen because such errors are caught by gico.sh
 	>&2 echo "Error! Wrong number of arguments."
 fi

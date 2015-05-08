@@ -26,3 +26,23 @@ In most cases, You want to clone an existing repository from a server. You can t
 
 ### Adding configuration and changing it
 If You want to manage a configuration file with *gico*, simply add it to the `<repo>/res` folder. You can use any Git procedure You're familiar with. Then call `gico configure` and see how Your file is installed to the root directioy of Your system. E.g. if Your file lives in `<repo>/res/etc/`, a hardlink will appear in `/etc/`. Any existing file will be moved to `<repo>/backup`. If there is no file, an empty dummy file will be added to the backup folder. *Attention:* If you're deleting a file, the hardlink will not disapper automatically. You need to do this by hand. After `gico configure` has installed the resource files, all hooks in `<repo>/hooks` will be executed in alphabetical order. `gico configure` will not install or remove package which are configured in `<repo>/packages`. 
+
+### Updating configuration from a server
+TODO
+
+### Installing and removing packages
+TODO
+
+## Advanced maneuvers
+
+### Writing installers with different branches
+TODO
+
+## Updating *gico*
+TODO
+
+## Contribute code to *gico*
+TODO
+
+## Frequently asked questions
+TODO

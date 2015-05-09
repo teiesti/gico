@@ -49,7 +49,8 @@ The second thing You need to know about managing packages via *gico* is that mos
 TODO
 
 ## Contribute code to *gico*
-TODO
-
-## Frequently asked questions
-TODO
+Simply do the following:
+  * Fork this repository.
+  * **Code!**
+  * Create a pull request.
+If you need help, ask me!

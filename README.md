@@ -9,9 +9,9 @@ The main idea behind **gico** is that You store almost every configuration withi
 
 ## Installation and update
 To install **gico** follow these instructions:
-  * Navigate to the folder, you want to install **gico** to: `cd /usr/local/src`.
-  * Clone this repository at the current stable version: `git clone -b stable https://github.com/teiesti/gico`.
-  * Install the `gico` command to Your system: `gico/gico.sh self-install`. This creates a symlink from `/usr/local/bin` to `<repo>/gico.sh`.
+  1. Navigate to the folder, you want to install **gico** to: `cd /usr/local/src`.
+  2. Clone this repository at the current stable version: `git clone -b stable https://github.com/teiesti/gico`.
+  3. Install the `gico` command to Your system: `gico/gico.sh self-install`. This creates a symlink from `/usr/local/bin` to `<repo>/gico.sh`.
   
 To update an existing **gico** installation call `gico self-update`.
 
@@ -50,8 +50,8 @@ TODO
 
 ## Contribute code to **gico**
 Simply do the following:
-  * Fork this repository.
-  * **Code!**
-  * Create a pull request.
+  1. Fork this repository.
+  2. **Code!**
+  3. Create a pull request.
   
 If you need help, ask me!

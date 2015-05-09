@@ -27,8 +27,13 @@ In most cases, You want to clone an existing repository from a server. You can d
 ### Adding configuration and changing it
 If You want to manage a configuration file with *gico*, simply add it to the `<repo>/res` folder. You can use any Git procedure You're familiar with. Then call `gico configure` and see how Your file is installed to the root directioy of Your system. E.g. if Your file lives in `<repo>/res/etc/`, a hardlink will appear in `/etc/`. Any existing file will be moved to `<repo>/backup`. If there is no file, an empty dummy file will be added to the backup folder. *Attention:* If you're deleting a file, the hardlink will not disapper automatically. You need to do this by hand. After `gico configure` has installed the resource files, all hooks in `<repo>/hooks` will be executed in alphabetical order. `gico configure` will not install or remove package which are configured in `<repo>/packages`. 
 
-### Updating configuration from a server
-TODO
+### Updating configuration from a remote
+Let's assume, Your configuration repository has a remote on a server or somewhere else (e.g. because You cloned it). Let's also assume, Your "remote configuration" was changed. You can pull the remote configuration with `gico update` which is a shorthand for something like `git -C <repo> pull` and `git configure`. The command will
+  - update any outdated configuration file,
+  - load new ones and
+  - create new hardlinks for new configuration files like 'gico configure' does.
+*Attention*:  Hardlinks for deleted files will not disappear automatically due to a certain reason. The system can't know if Your deleting a configuration file because it is not longer needed or if You just want to delete it from the version control system. Therefore, you may need to clean up Your system by hand.
+`git update` does not install or remove packages as specified in Your packages file. Therefore, please use `gico full-update`.
 
 ### Installing and removing packages
 TODO

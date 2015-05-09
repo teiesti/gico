@@ -17,6 +17,12 @@ for RESOURCE_FILE in $(find $RESOURCE_DIR -type f); do
 	EXISTING_FILE=${RESOURCE_FILE#$RESOURCE_DIR}
 	BACKUP_FILE=$BACKUP_DIR$ORIGINAL_FILE
 	
+	# Ignore git related files like .gitignore or .gitkeep
+	if [ $RESOURCE_FILE == "\.git*" ]; do
+		echo "Ignoring git related file $RESOURCE_FILE."
+		continue
+	fi
+	
 	# Check if the resource file is already installed
 	if [ ! $RESOURCE_FILE -ef $EXISTING_FILE ]; then
 		mkdir -p $(dirname $BACKUP_FILE)

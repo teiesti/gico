@@ -57,6 +57,12 @@ elif [ $1 = "self-install" ]; then
 	else
 		$HOME_DIR/gico-help.sh
 	fi
+elif [ $1 = "self-update" ]; then
+	if [ $# -eq 1 ]; then
+		$HOME_DIR/gico-self-update.sh
+	else
+		$HOME_DIR/gico-help.sh
+	fi
 elif [ $1 = "update" ]; then
 	if [ $# -eq 1 ]; then
 		$HOME_DIR/gico-update.sh

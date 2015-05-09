@@ -28,5 +28,5 @@ else
 	>&2 echo "Error! Wrong number of arguments."
 fi
 
-git checkout -b $(hostname)
-git remote rm origin
+git -C $DIR checkout -b $(hostname)
+git -C $DIR remote rm origin

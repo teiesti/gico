@@ -17,17 +17,25 @@ if [ $1 = "configure" ]; then
 	else
 		$HOME_DIR/gico-help.sh
 	fi
+elif [ $1 = "clone" ]; then
+	if [ $# -eq 2 ]; then
+		$HOME_DIR/gico-clone.sh $2
+	elif [ $# -eq 3 ]; then
+		$HOME_DIR/gico-clone.sh $2 $3
+	else
+		$HOME_DIR/gico-help.sh
+	fi
 elif [ $1 = "full-configure" ]; then
 	if [ $# -eq 1 ]; then
 		$HOME_DIR/gico-full-configure.sh
 	else
 		$HOME_DIR/gico-help.sh
 	fi
-elif [ $1 = "full-install" ]; then
+elif [ $1 = "full-clone" ]; then
 	if [ $# -eq 2 ]; then
-		$HOME_DIR/gico-full-install.sh $2
+		$HOME_DIR/gico-full-clone.sh $2
 	elif [ $# -eq 3 ]; then
-		$HOME_DIR/gico-full-install.sh $2 $3
+		$HOME_DIR/gico-full-clone.sh $2 $3
 	else
 		$HOME_DIR/gico-help.sh
 	fi
@@ -45,14 +53,6 @@ elif [ $1 = "init" ]; then
 	else
 		$HOME_DIR/gico-help.sh
 	fi	
-elif [ $1 = "install" ]; then
-	if [ $# -eq 2 ]; then
-		$HOME_DIR/gico-install.sh $2
-	elif [ $# -eq 3 ]; then
-		$HOME_DIR/gico-install.sh $2 $3
-	else
-		$HOME_DIR/gico-help.sh
-	fi
 elif [ $1 = "manage-packages" ]; then
 	if [ $# -eq 1 ]; then
 		$HOME_DIR/gico-manage-packages.sh

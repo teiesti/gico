@@ -17,6 +17,12 @@ if [ $1 = "configure" ]; then
 	else
 		$HOME_DIR/gico-help.sh
 	fi
+elif [ $1 = "full-configure" ]; then
+	if [ $# -eq 1 ]; then
+		$HOME_DIR/gico-full-configure.sh
+	else
+		$HOME_DIR/gico-help.sh
+	fi
 elif [ $1 = "full-install" ]; then
 	if [ $# -eq 2 ]; then
 		$HOME_DIR/gico-full-install.sh $2

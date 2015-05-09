@@ -9,10 +9,14 @@ The main idea behind **gico** is that You store almost every configuration withi
 
 ## Installation and update
 To install **gico** follow these instructions:
-  1. Navigate to the folder, you want to install **gico** to: `cd /usr/local/src`.
-  2. Clone this repository at the current stable version: `git clone -b stable https://github.com/teiesti/gico`.
-  3. Install the `gico` command to Your system: `gico/gico.sh self-install`. This creates a symlink from `/usr/local/bin` to `<repo>/gico.sh`.
-  
+  1. Navigate to the folder, you want to install **gico** to: 
+     `cd /usr/local/src`
+  2. Clone this repository at the current stable version: 
+     `git clone -b stable https://github.com/teiesti/gico`
+  3. Install the `gico` command to Your system: 
+     `gico/gico.sh self-install`
+	 This creates a symlink from `/usr/local/bin` to `<repo>/gico.sh`.
+
 To update an existing **gico** installation call `gico self-update`.
 
 ## Basic operations
@@ -21,14 +25,14 @@ To update an existing **gico** installation call `gico self-update`.
 To use **gico** You need to create a new "gico-flavoured" Git repository. The easiest way to do this, is to run `gico init [<branch>]`. This creates an "empty" repository to `/usr/local/etc/gico`. If this path already exists, **gico** will abort and You must manually delete the folder. An empty repository consists of
   - `<repo>/res` where all the installable resource files (e.g. configuration files) live,
   - `<repo>/hooks' which stores the hooks,
-  - `<repo>/backup` which is used to back up existing files when the resources are installed and 
+  - `<repo>/backup` which is used to back up existing files when the resources are installed and
   - `<repo>/packages`which is a list of packages which should be installed or removed.
 
 ### Cloning an existing repository
 In most cases, You want to clone an existing repository from a server. You can do this with `gico install <repo> [<branch>]` where `<repo>` is the URL to a usual Git repository. To avoid errors, it should have the structure explained above. You can use the optional `<branch>` parameter to clone a specific branch. This is especially useful if You have to manage different servers with slightly different configuration. Cloning an repository will install any file in `<repo>/res` to the root of Your file system using hardlinks. Hardlinks are used because they do better with permissions and won't break if someone removes the original - otherwise this may breaks the hole system. `gico install <repo> [<branch>]` does not install or remove the packages specified in `<repo>/packages`. Therefore, please use `gico full-install <repo> [<branch>]`.
 
 ### Adding configuration and changing it
-If You want to manage a configuration file with **gico**, simply add it to the `<repo>/res` folder. You can use any Git procedure You're familiar with. Then call `gico configure` and see how Your file is installed to the root directory of Your system. E.g. if Your file lives in `<repo>/res/etc/`, a hardlink will appear in `/etc/`. Any existing file will be moved to `<repo>/backup`. If there is no file, an empty dummy file will be added to the backup folder. *Attention:* If you're deleting a file, the hardlink will not disappear automatically. You need to do this by hand. After `gico configure` has installed the resource files, all hooks in `<repo>/hooks` will be executed in alphabetical order. `gico configure` will not install or remove package which are configured in `<repo>/packages`. 
+If You want to manage a configuration file with **gico**, simply add it to the `<repo>/res` folder. You can use any Git procedure You're familiar with. Then call `gico configure` and see how Your file is installed to the root directory of Your system. E.g. if Your file lives in `<repo>/res/etc/`, a hardlink will appear in `/etc/`. Any existing file will be moved to `<repo>/backup`. If there is no file, an empty dummy file will be added to the backup folder. *Attention:* If you're deleting a file, the hardlink will not disappear automatically. You need to do this by hand. After `gico configure` has installed the resource files, all hooks in `<repo>/hooks` will be executed in alphabetical order. `gico configure` will not install or remove package which are configured in `<repo>/packages`.
 
 ### Updating configuration from a remote
 Let's assume, Your configuration repository has a remote on a server or somewhere else (e.g. because You cloned it). Let's also assume, Your "remote configuration" was changed. You can pull the remote configuration with `gico update` which is a shorthand for something like `git -C <repo> pull` and `git configure`. The command will
@@ -53,5 +57,5 @@ Simply do the following:
   1. Fork this repository.
   2. **Code!**
   3. Create a pull request.
-  
+
 If you need help, ask me!

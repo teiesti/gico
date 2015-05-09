@@ -5,4 +5,4 @@ HOME_DIR=$(dirname $(readlink -f $BASH_SOURCE))	# could not be loaded within env
 #source $HOME_DIR/environment.sh
 
 $HOME_DIR/gico-install.sh $@
-$HOME_DIR/gico-configure-packages.sh
+$HOME_DIR/gico-manage-packages.sh

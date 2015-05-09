@@ -17,12 +17,6 @@ if [ $1 = "configure" ]; then
 	else
 		$HOME_DIR/gico-help.sh
 	fi
-elif [ $1 = "configure-packages" ]; then
-	if [ $# -eq 1 ]; then
-		$HOME_DIR/gico-configure-packages.sh
-	else
-		$HOME_DIR/gico-help.sh
-	fi
 elif [ $1 = "full-install" ]; then
 	if [ $# -eq 2 ]; then
 		$HOME_DIR/gico-full-install.sh $2
@@ -42,6 +36,12 @@ elif [ $1 = "install" ]; then
 		$HOME_DIR/gico-install.sh $2
 	elif [ $# -eq 3 ]; then
 		$HOME_DIR/gico-install.sh $2 $3
+	else
+		$HOME_DIR/gico-help.sh
+	fi
+elif [ $1 = "manage-packages" ]; then
+	if [ $# -eq 1 ]; then
+		$HOME_DIR/gico-manage-packages.sh
 	else
 		$HOME_DIR/gico-help.sh
 	fi

@@ -5,7 +5,7 @@ HOME_DIR=$(dirname $(readlink -f $BASH_SOURCE))	# could not be loaded within env
 source $HOME_DIR/environment.sh
 
 # Install or uninstall packages
-echo "Configuring packages as defined in $PACKAGES_FILE."
+echo "Managing packages as defined in $PACKAGES_FILE."
 for QUALIFIED_PACKAGE in $(cat $PACKAGES_FILE); do
 	JOB=${QUALIFIED_PACKAGE:0:1}
 	PACKAGE=${QUALIFIED_PACKAGE:1}

@@ -37,6 +37,12 @@ elif [ $1 = "full-update" ]; then
 	else
 		$HOME_DIR/gico-help.sh
 	fi
+elif [ $1 = "init" ]; then
+	if [ $# -eq 1 ]; then
+		$HOME_DIR/gico-init.sh
+	else
+		$HOME_DIR/gico-help.sh
+	fi	
 elif [ $1 = "install" ]; then
 	if [ $# -eq 2 ]; then
 		$HOME_DIR/gico-install.sh $2

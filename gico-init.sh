@@ -19,14 +19,17 @@ fi
 # Creating a new gico repository
 echo "Creating repository."
 
+echo "Cloning $REPO_EMPTY_URL to $DIR."
+git clone -b $REPO_VERSION --depth 1 $REPO_EMPTY_URL $DIR
+
 if [ $# -eq 0 ]; then
-	git clone -b $REPO_VERSION --depth 1 $REPO_EMPTY_URL $DIR
+	git -C $DIR checkout -b $(hostname)
 elif [ $# -eq 1 ]; then
-	git clone -b $1 --depth 1 $REPO_EMPTY_URL $DIR
+	git -C $DIR checkout -b $1
 else
 	# This should never happen because such errors are caught by gico.sh
 	>&2 echo "Error! Wrong number of arguments."
 fi
 
-git -C $DIR checkout -b $(hostname)
+echo "Removing remote origin."
 git -C $DIR remote rm origin

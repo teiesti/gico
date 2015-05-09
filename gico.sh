@@ -11,7 +11,7 @@ if [ $# -lt 1 ]; then
 fi
 
 # Execute command
-if [ $1 = "configure" ]; then
+if [ $1 = "configure" ] || [ $1 = "install" ]; then
 	if [ $# -eq 1 ]; then
 		$HOME_DIR/gico-configure.sh
 	else
@@ -25,7 +25,7 @@ elif [ $1 = "clone" ]; then
 	else
 		$HOME_DIR/gico-help.sh
 	fi
-elif [ $1 = "full-configure" ]; then
+elif [ $1 = "full-configure" ] || [ $1 = "full-install" ]; then
 	if [ $# -eq 1 ]; then
 		$HOME_DIR/gico-full-configure.sh
 	else

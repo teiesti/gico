@@ -39,7 +39,7 @@ elif [ $1 = "full-clone" ]; then
 	else
 		$HOME_DIR/gico-help.sh
 	fi
-elif [ $1 = "full-update" ]; then
+elif [ $1 = "full-update" ] || [ $1 = "full-pull" ]; then
 	if [ $# -eq 1 ]; then
 		$HOME_DIR/gico-full-update.sh
 	else
@@ -71,7 +71,7 @@ elif [ $1 = "self-update" ]; then
 	else
 		$HOME_DIR/gico-help.sh
 	fi
-elif [ $1 = "update" ]; then
+elif [ $1 = "update" ] || [ $1 = "pull" ]; then
 	if [ $# -eq 1 ]; then
 		$HOME_DIR/gico-update.sh
 	else

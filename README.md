@@ -36,7 +36,9 @@ Let's assume, Your configuration repository has a remote on a server or somewher
 `git update` does not install or remove packages as specified in Your packages file. Therefore, please use `gico full-update`.
 
 ### Installing and removing packages
-TODO
+*gico* allows You to automatically install or remove packages. The first thing You need to understand about this feature is that *gico* always regards the current state of Your machine: *gico* does nothing if nothing is specified in `<repo>/packages`. Based on that you can add a packages by adding `+<package name>` or `<package name>` as a new row to the configuration file. To delete a package add `-<package name>`. To purge a package use `_<package name>`. Please note, that required dependencies will be installed. On the other hand, if a deletion causes a (automatically installed) dependency to be unused, that dependency will be deleted. *gico* honors the appearance order in `<repo>/packages`.
+
+The second thing You need to know about managing packages via *gico* is that most commands simply don't regard it. This is a tribute to the fact that installing or removing packages can cause massive problems including loss of data. If You just want to apply what's written in `<repo>/packages` call `gico manage-packages`. If you want that a certain command like `gico <cmd> [<parameter> ...]` regards the package management call `gico full-<cmd> [<parameter> ...]` instead. This is possible for most commands.
 
 ## Advanced maneuvers
 

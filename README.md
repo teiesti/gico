@@ -7,10 +7,13 @@ The main idea behind *gico* is that You store almost every configuration within 
 
 *gico* is optimized for Debian 8 "Jessie" but - with some keystrokes - it will make it on different operation systems (expect Windows and Co.), too.
 
-## Installation
+## Installation and update
+To install *gico* follow these instructions:
   * Navigate to the folder, you want to install *gico* to: `cd /usr/local/src`.
   * Clone this repository at the current stable version: `git clone -b stable https://github.com/teiesti/gico`.
   * Install the `gico` command to Your system: `gico/gico.sh self-install`. This creates a symlink from `/usr/local/bin` to `<repo>/gico.sh`.
+  
+To update an existing *gico* installation call `gico self-update`.
 
 ## Basic operations
 
@@ -43,9 +46,6 @@ The second thing You need to know about managing packages via *gico* is that mos
 ## Advanced maneuvers
 
 ### Writing installers with different branches
-TODO
-
-## Updating *gico*
 TODO
 
 ## Contribute code to *gico*

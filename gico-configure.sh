@@ -45,6 +45,13 @@ done
 # Execute hooks (e.g. to restart services)
 echo "Executing hooks."
 for HOOK_FILE in $(find $HOOK_DIR -type f); do
+	# Ignore git related files like .gitignore or .gitkeep
+	if [[ $HOOK_FILE =~ \.git* ]]; then
+		echo "Ignoring git related file $RESOURCE_FILE."
+		continue
+	fi
+	
+	# Execute hook file if executable
 	if [ -x $HOOK_FILE ]; then
 		echo "Executing $HOOK_FILE."
 		$HOOK_FILE

@@ -18,7 +18,7 @@ for RESOURCE_FILE in $(find $RESOURCE_DIR -type f); do
 	BACKUP_FILE=$BACKUP_DIR$ORIGINAL_FILE
 	
 	# Ignore git related files like .gitignore or .gitkeep
-	if [ $RESOURCE_FILE ~= "\.git*" ]; do
+	if [[ $RESOURCE_FILE =~ \.git* ]]; then
 		echo "Ignoring git related file $RESOURCE_FILE."
 		continue
 	fi

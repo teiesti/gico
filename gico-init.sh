@@ -32,7 +32,7 @@ else
 fi
 
 echo "Rewriting commit message."
-git commit --amend -m "Basic repository structure for gico added."
+git -C $DIR commit --amend -m "Basic repository structure for gico added."
 
 echo "Removing remote origin."
 git -C $DIR remote rm origin

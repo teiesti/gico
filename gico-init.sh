@@ -31,5 +31,8 @@ else
 	>&2 echo "Error! Wrong number of arguments."
 fi
 
+echo "Rewriting commit message."
+git commit --amend -m "Basic repository structure for gico added."
+
 echo "Removing remote origin."
 git -C $DIR remote rm origin

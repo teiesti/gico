@@ -22,7 +22,8 @@ if [ -e $BACKUP_DIR ]; then
 fi
 
 # Install new resources files and back up existing ones
-echo "Installing new resources files. Existing files will be backed up to $BACKUP_DIR."
+echo "Installing new resources files."
+echo "Existing files will be backed up to $BACKUP_DIR."
 for RESOURCE_FILE in $(find $RESOURCE_DIR -type f); do
 	EXISTING_FILE=${RESOURCE_FILE#$RESOURCE_DIR}
 	BACKUP_FILE=$BACKUP_DIR/$EXISTING_FILE
@@ -35,7 +36,7 @@ for RESOURCE_FILE in $(find $RESOURCE_DIR -type f); do
 	
 	# Ignore files that are already installed
 	if [ $RESOURCE_FILE -ef $EXISTING_FILE ]; then
-		echo "Ignoring already installed file $RESOURCE_FILE."
+		echo "Ignoring installed file $RESOURCE_FILE."
 		continue
 	fi
 	

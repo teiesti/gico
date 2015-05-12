@@ -11,7 +11,7 @@ The gico commands are:
    help              Show this help
    init              Create an empty gico repository
    manage-packages   Install, remove and purge packages
-   self-install      Install the 'gico' command to the system.
+   self-install      Install the 'gico' command to the system
    self-update       Update the 'gico' command to the latest version
    update            Update a gico repository and execute 'configure'
    

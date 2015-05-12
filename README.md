@@ -39,6 +39,7 @@ Let's assume, Your configuration repository has a remote on a server or somewher
   - update any outdated configuration file,
   - load new ones and
   - create new hardlinks for new configuration files like 'gico configure' does.
+
 *Attention*:  Hardlinks for deleted files will not disappear automatically due to a certain reason. The system can't know if Your deleting a configuration file because it is not longer needed or if You just want to delete it from the version control system. Therefore, you may need to clean up Your system by hand.
 `git update` does not install or remove packages as specified in Your packages file. Therefore, please use `gico full-update`.
 

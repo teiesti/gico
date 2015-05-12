@@ -71,6 +71,12 @@ elif [ $1 = "self-update" ]; then
 	else
 		$HOME_DIR/gico-help.sh
 	fi
+elif [ $1 = "smart-configure" ] || [ $1 = "smart-install" ]; then
+	if [ $# -eq 1 ]; then
+		$HOME_DIR/gico-smart-configure.sh
+	else
+		$HOME_DIR/gico-help.sh
+	fi
 elif [ $1 = "update" ] || [ $1 = "pull" ]; then
 	if [ $# -eq 1 ]; then
 		$HOME_DIR/gico-update.sh

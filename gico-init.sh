@@ -20,7 +20,7 @@ fi
 echo "Creating repository."
 
 echo "Cloning $REPO_EMPTY_URL to $DIR."
-git clone -b $REPO_VERSION --depth 1 $REPO_EMPTY_URL $DIR
+git clone -b $REPO_VERSION --no-checkout --depth 1 $REPO_EMPTY_URL $DIR
 
 if [ $# -eq 0 ]; then
 	git -C $DIR checkout -b $(hostname)
@@ -32,7 +32,7 @@ else
 fi
 
 echo "Rewriting commit message."
-git -C $DIR commit --amend -m "Basic repository structure for gico added."
+git -C $DIR commit -q --amend -m "Basic repository structure for gico added."
 
 echo "Removing remote origin."
 git -C $DIR remote rm origin

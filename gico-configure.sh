@@ -14,8 +14,6 @@ source $HOME_DIR/environment.sh
 # Install new resources files and back up existing ones
 echo "Installing new resources files. Existing files will be backed up to $BACKUP_DIR."
 for RESOURCE_FILE in $(find $RESOURCE_DIR -type f); do
-	EXISTING_FILE=${RESOURCE_FILE#$RESOURCE_DIR}
-	BACKUP_FILE=$BACKUP_DIR/$EXISTING_FILE
 	
 	# Ignore git related files like .gitignore or .gitkeep
 	if [[ $RESOURCE_FILE =~ \.git* ]]; then
@@ -23,23 +21,37 @@ for RESOURCE_FILE in $(find $RESOURCE_DIR -type f); do
 		continue
 	fi
 	
-	# Check if the resource file is already installed
-	if [ ! $RESOURCE_FILE -ef $EXISTING_FILE ]; then
-		mkdir -p $(dirname $BACKUP_FILE)
-		
-		# Move existing files to the backup folder or create a dummy file if no such file exists
-		if [ -e $EXISTING_FILE ]; then
-			echo "Moving $EXISTING_FILE to the backup folder."
-			mv $EXISTING_FILE $BACKUP_FILE
-		else
-			echo "Warning! There is no file named $EXISTING_FILE. Creating empty dummy file within the backup folder."
-			echo > $BACKUP_FILE
-		fi
-	
-		# Install resource file (using a hardlink, because symlinks have problems with permissions)
-		echo "Installing $RESOURCE_FILE to $EXISTING_FILE."
-		ln $RESOURCE_FILE $EXISTING_FILE
+	# Ignore files that are already installed
+	EXISTING_FILE=${RESOURCE_FILE#$RESOURCE_DIR}
+	if [ $RESOURCE_FILE -ef $EXISTING_FILE ]; then
+		echo "Resource file $RESOURCE_FILE is already installed."
+		continue
 	fi
+
+	# Rewrite backup path, if path already exists
+	if [ -e $BACKUP_DIR ]; then
+		N=1
+		while [ -e $BACKUP_DIR"_"$N]
+		do
+			N=$N+1
+		done
+		BACKUP_DIR=$BACKUP_DIR"_"$N
+	fi
+	
+	# Move existing files to the backup folder or create a dummy file if no such file exists
+	BACKUP_FILE=$BACKUP_DIR/$EXISTING_FILE
+	mkdir -p $(dirname $BACKUP_FILE)
+	if [ -e $EXISTING_FILE ]; then
+		echo "Moving $EXISTING_FILE to the backup folder."
+		mv $EXISTING_FILE $BACKUP_FILE
+	else
+		echo "Warning! There is no file named $EXISTING_FILE. Creating empty dummy file within the backup folder."
+		echo > $BACKUP_FILE
+	fi
+	
+	# Install resource file (using a hardlink, because symlinks have problems with permissions)
+	echo "Installing $RESOURCE_FILE to $EXISTING_FILE."
+	ln $RESOURCE_FILE $EXISTING_FILE
 done
 
 # Execute hooks (e.g. to restart services)

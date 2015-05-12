@@ -15,7 +15,7 @@ source $HOME_DIR/environment.sh
 echo "Installing new resources files. Existing files will be backed up to $BACKUP_DIR."
 for RESOURCE_FILE in $(find $RESOURCE_DIR -type f); do
 	EXISTING_FILE=${RESOURCE_FILE#$RESOURCE_DIR}
-	BACKUP_FILE=$BACKUP_DIR$ORIGINAL_FILE
+	BACKUP_FILE=$BACKUP_DIR/$EXISTING_FILE
 	
 	# Ignore git related files like .gitignore or .gitkeep
 	if [[ $RESOURCE_FILE =~ \.git* ]]; then

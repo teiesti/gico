@@ -11,7 +11,7 @@ if [ ! -z $(git status --porcelain) ]; then
 fi
 
 # If the based-on file exists and is not empty, we need to configure the "based-on" configuration first
-if [ -s $BASED_ON_FILE ] || ; then
+if [ -s $BASED_ON_FILE ]; then
 	# Read based-on file and check its syntax
 	BASED_ON=$(head -n 1 $BASED_ON_FILE)
 	git check-ref-format --branch $BASED_ON

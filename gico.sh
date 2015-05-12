@@ -77,6 +77,14 @@ elif [ $1 = "smart-configure" ] || [ $1 = "smart-install" ]; then
 	else
 		$HOME_DIR/gico-help.sh
 	fi
+elif [ $1 = "smart-clone" ]; then
+	if [ $# -eq 2 ]; then
+		$HOME_DIR/gico-smart-clone.sh $2
+	elif [ $# -eq 3 ]; then
+		$HOME_DIR/gico-smart-clone.sh $2 $3
+	else
+		$HOME_DIR/gico-help.sh
+	fi
 elif [ $1 = "update" ] || [ $1 = "pull" ]; then
 	if [ $# -eq 1 ]; then
 		$HOME_DIR/gico-update.sh

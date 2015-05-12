@@ -13,6 +13,9 @@ The gico commands are:
    manage-packages   Install, remove and purge packages
    self-install      Install the 'gico' command to the system
    self-update       Update the 'gico' command to the latest version
+   smart-configure   Recursively checkout the reference in 'based-on' and
+                     execute 'full-configure' on the way back up.
+   smart-clone       Clone a gico repository and execute 'smart-configure'
    update            Update a gico repository and execute 'configure'
    
 For detailed information read the official README file."

@@ -10,6 +10,12 @@ if [ ! -x $(which git) ]; then
 	exit
 fi
 
+# Check if remote repository is specified
+if [ -z $(git -C $DIR remote) ]; then
+	>&2 echo "Error! No remote repository is specified."
+	exit
+fi
+
 # Update repository
 echo "Updating repository."
 git -C $DIR pull

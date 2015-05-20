@@ -5,7 +5,7 @@ HOME_DIR=$(dirname $(readlink -f $BASH_SOURCE))	# could not be loaded within env
 source $HOME_DIR/environment.sh
 
 # Check if repository is clean, abort if not
-if [ ! -z $(git status --porcelain) ]; then
+if [ ! -z $(git -C $DIR status --porcelain) ]; then
 	>&2 echo "Error! Gico repository $DIR is not clean."
 	exit
 fi

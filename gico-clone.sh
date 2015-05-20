@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Load environment variables
-HOME_DIR=$(dirname $(readlink -f $BASH_SOURCE))	# could not be loaded within environment.sh because of chicken and egg
-source $HOME_DIR/environment.sh
+HOME=$(dirname $(readlink -f $BASH_SOURCE))	# could not be loaded within environment.sh because of chicken and egg
+source $HOME/environment.sh
 
 # Check if Git is installed
 if [ ! -x $(which git) ]; then
@@ -11,21 +11,21 @@ if [ ! -x $(which git) ]; then
 fi
 
 # Check if the directory for the configuration repository is empty
-if [ -e $DIR ] && [ "$(ls -A $DIR)" ]; then
-	>&2 echo "Error! $DIR is not empty."
+if [ -e $REPO ] && [ "$(ls -A $REPO)" ]; then
+	>&2 echo "Error! '$REPO' is not empty."
 	exit
 fi
 
 # Clone repository
 echo "Cloning repository."
 if [ $# -eq 1 ]; then
-	git clone $1 $DIR
+	git clone $1 $REPO
 elif [ $# -eq 2 ]; then
-	git clone -b $2 $1 $DIR
+	git clone -b $2 $1 $REPO
 else
 	# This should never happen because such errors are caught by gico.sh
 	>&2 echo "Error! Wrong number of arguments."
 fi
 
 # Configure resources
-$HOME_DIR/gico-configure.sh
+$HOME/gico-configure.sh

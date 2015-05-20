@@ -1,13 +1,7 @@
 # Ignore OS config files
-
 *.directory
 *desktop.ini
 *Desktop.ini
 *Thumbs.db
 *thumbs.db
 *.bak
-
-
-# Ignore /backup folder created by the install script
-
-backup/

@@ -20,8 +20,13 @@ if [ -s $BASED_ON_FILE ]; then
 		exit
 	fi
 
-	# Checkout the branch, tag or commit this configuration is based on, save reference to the current HEAD
-	CURRENT_COMMIT=$(git -C $DIR rev-parse HEAD)
+	# Save reference to the current HEAD, use branch or tag name if available 
+	CURRENT_COMMIT=$(git -C $DIR rev-parse --abbrev-ref HEAD)
+	if [ $CURRENT_COMMIT = "HEAD" ]; then
+		CURRENT_COMMIT=$(git -C $DIR rev-parse HEAD)
+	fi
+	
+	# Checkout the branch, tag or commit this configuration is based on
 	echo "The current configuration is based on $BASED_ON. Checking it out."
 	git -C $DIR checkout $BASED_ON
 

@@ -14,7 +14,7 @@ fi
 if [ -s $BASED_ON_FILE ]; then
 	# Read based-on file and check its syntax
 	BASED_ON=$(head -n 1 $BASED_ON_FILE)
-	git -C $DIR check-ref-format --branch $BASED_ON
+	git -C $DIR check-ref-format --branch $BASED_ON > /dev/null
 	if [ $? -ne 0 ]; then
 		>&2 echo "Error! $BASED_ON_FILE contains no valid reference to a branch, tag or commit."
 		exit

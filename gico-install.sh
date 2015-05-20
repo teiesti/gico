@@ -5,18 +5,40 @@ HOME=$(dirname $(readlink -f $BASH_SOURCE))	# could not be loaded within environ
 source $HOME/environment.sh
 
 # Install configuration from any subfolder
-for FOLDER in $REPO/*/; do
-	echo "Installing configuration in '$FOLDER'."
-	init_env $FOLDER
+for DIR in $REPO/*/; do
+	echo "Installing configuration in '$DIR'."
+	init_env $DIR
+	
+	# Install or uninstall packages
+	echo "Managing packages as defined in '$PACKAGES_FILE.'"
+	for QUALIFIED_PACKAGE in $(cat $PACKAGES_FILE); do
+		JOB=${QUALIFIED_PACKAGE:0:1}
+		PACKAGE=${QUALIFIED_PACKAGE:1}
+
+		if [ $JOB = "+" ]; then
+			echo "Installing $PACKAGE."
+			apt-get -y install $PACKAGE
+		elif [ $JOB = "-" ]; then
+			echo "Removing $PACKAGE."
+			apt-get -y remove $PACKAGE
+		elif [ $JOB = "_" ]; then
+			echo "Purging $PACKAGE."
+			apt-get -y purge $PACKAGE
+		else
+			PACKAGE=$QUALIFIED_PACKAGE
+			echo "Installing $PACKAGE."
+			apt-get -y install $PACKAGE
+		fi
+	done
 	
 	# Rewrite backup path, if path already exists
-	if [ -e $BACKUP ]; then
+	if [ -e $BACKUP_DIR ]; then
 		N=1
-		while [ -e $BACKUP"_"$N]
+		while [ -e $BACKUP_DIR"_"$N]
 		do
 			N=$N+1
 		done
-		BACKUP=$BACKUP"_"$N
+		BACKUP=$BACKUP_DIR"_"$N
 	fi
 	
 	# Install new resources files and back up existing ones
@@ -24,7 +46,7 @@ for FOLDER in $REPO/*/; do
 	echo "Existing files will be backed up to '$BACKUP_DIR'."
 	for RESOURCE_FILE in $(find $RESOURCE -type f); do
 		EXISTING_FILE=${RESOURCE_FILE#$RESOURCE}
-		BACKUP_FILE=$BACKUP/$EXISTING_FILE
+		BACKUP_FILE=$BACKUP_DIR/$EXISTING_FILE
 		
 		# Ignore git related files like .gitignore or .gitkeep
 		if [[ $RESOURCE_FILE =~ \.git* ]]; then
@@ -72,7 +94,3 @@ for FOLDER in $REPO/*/; do
 	done
 
 done
-
-
-
-

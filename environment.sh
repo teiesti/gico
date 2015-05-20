@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOME=/usr/local/bin								# path to the bin folder
+BIN=/usr/local/bin								# path to the bin folder
 
 REPO=/usr/local/etc/gico						# path to the configuration repository
 REPO_VERSION="v2.0.0-1"							# version of the configuration repository
